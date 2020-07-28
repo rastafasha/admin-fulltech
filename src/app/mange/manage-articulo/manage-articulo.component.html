@@ -1,0 +1,75 @@
+<app-menu></app-menu>
+<app-header></app-header>
+<div class=" content-inner ">
+    <div class="container-fluid ">
+
+        <!-- Begin Page Header-->
+        <div class="row ">
+            <div class="page-header ">
+                <div class="d-flex align-items-center ">
+                    <h2 class="page-header-title ">{{title}}</h2>
+                    <div>
+                        <div class="page-header-tools ">
+                            <a class="btn btn-gradient-01 " href="javascript:void(0) " (click)="goBack() ">Back</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-header-tools ">
+                            <a class="btn btn-gradient-01 " [routerLink]="[ '/articulo/create/'] ">Add item</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Header -->
+        <!--Including the pagination control.-->
+        <div class="row ">
+            <div class="text-center mt-4 mb-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+        <div class="row flex-row ">
+            <div class="col-12 ">
+                <!-- Form -->
+                <div class="widget has-shadow ">
+                    <table class="table table-bordered table-striped ">
+                        <tr>
+                            <th class="footable-sortable">No<span class="footable-sort-indicator"></span></th>
+                            <th>imagen<span class="footable-sort-indicator"></span></th>
+                            <th>Título<span class="footable-sort-indicator"></span></th>
+                            <th>Enlace<span class="footable-sort-indicator"></span></th>
+                            <th>Abre<span class="footable-sort-indicator"></span></th>
+                            <th>Categoría<span class="footable-sort-indicator"></span></th>
+                            <th>Creado<span class="footable-sort-indicator"></span></th>
+                            <th>Acciones<span class="footable-sort-indicator"></span></th>
+                        </tr>
+                        <tr *ngFor="let articulo of articulos | keys | paginate: { itemsPerPage: count, currentPage: p }">
+                            <td>{{articulo.id}}</td>
+                            <td><img src="{{articulo.image}} " style="width: 100px "></td>
+                            <td>{{articulo.title}}</td>
+                            <td>{{articulo.technology}}</td>
+                            <td>{{articulo.popup}}</td>
+                            <td>{{articulo.categoryId}}</td>
+                            <td>{{articulo.createdAt | date: 'mediumDate'}}</td>
+                            <td class="td-actions ">
+                                <a [routerLink]="[ '/articulo/edit', articulo.id] "><i class="la la-edit edit "></i></a>
+                                <a (click)="onDelete(articulo.id) "><i class="la la-close delete "></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                    {{error}}
+
+                </div>
+                <!-- End Form -->
+            </div>
+        </div>
+        <!-- End Row -->
+        <!--Including the pagination control.-->
+        <div class="row ">
+            <div class="text-center mt-4 mb-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    <!-- End Container -->
+    <app-footer></app-footer>

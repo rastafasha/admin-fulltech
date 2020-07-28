@@ -1,0 +1,70 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-inner">
+    <div class="container-fluid">
+
+        <!-- Begin Page Header-->
+        <div class="row">
+            <div class="page-header">
+                <div class="d-flex align-items-center">
+                    <h2 class="page-header-title">{{title}}</h2>
+                    <div>
+                        <div class="page-header-tools">
+                            <a class="btn btn-gradient-01" href="javascript:void(0)" (click)="goBack()">Back</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-header-tools">
+                            <a class="btn btn-gradient-01" [routerLink]="['#']">Export to Excel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Header -->
+
+        <!--Including the pagination control.-->
+        <div class="row ">
+            <div class="text-center mt-4 mb-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+        <div class="row flex-row">
+            <div class="col-12">
+                <!-- Form -->
+                <div class="widget has-shadow">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>#ID</th>
+                            <th>Name</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Created At</th>
+                        </tr>
+                        <tr *ngFor="let contact of contacts | keys | paginate: { itemsPerPage: count, currentPage: p }">
+                            <td>{{contact.id}}</td>
+                            <td>{{contact.name}}</td>
+                            <td>{{contact.lastname}}</td>
+                            <td>{{contact.email}}</td>
+                            <td>{{contact.phone}}</td>
+                            <td>{{contact.createdAt | date: 'mediumDate'}}</td>
+                        </tr>
+                    </table>
+                    {{error}}
+
+                </div>
+                <!-- End Form -->
+            </div>
+        </div>
+        <!-- End Row -->
+
+        <!--Including the pagination control.-->
+        <div class="row ">
+            <div class="text-center mt-4 mb-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    <!-- End Container -->
+    <app-footer></app-footer>

@@ -1,0 +1,45 @@
+table,
+.table-responsive {
+    width: 100%;
+    text-align: left;
+    table-layout: fixed;
+}
+
+th,
+td {
+    word-wrap: break-word;
+    width: 100%;
+}
+
+nav.navbar .user-size.dropdown-menu a.logout {
+    background: #005696 !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #005696 !important;
+    border-color: #005696 !important;
+}
+
+.default-sidebar {
+    background: #005696 !important;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    z-index: 999;
+    transition: all 0.2s ease;
+}
+
+.btn-gradient-01,
+.btn-gradient-01 a {
+    background: #005696;
+    background: linear-gradient(to bottom, #005696 0%, #28b2e2 100%);
+    background-size: 200% auto;
+    font-weight: 600;
+    transition: 0.5s;
+    color: #fff;
+    border: 0 none;
+    padding: 12px 20px;
+}
+
+@media screen and (max-width: 750px) {}

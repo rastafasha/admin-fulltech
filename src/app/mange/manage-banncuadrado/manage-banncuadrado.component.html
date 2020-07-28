@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+<app-header></app-header>
+<div class=" content-inner ">
+    <div class="container-fluid ">
+
+        <!-- Begin Page Header-->
+        <div class="row ">
+            <div class="page-header ">
+                <div class="d-flex align-items-center ">
+                    <h2 class="page-header-title ">{{title}}</h2>
+                    <div>
+                        <div class="page-header-tools ">
+                            <a class="btn btn-gradient-01 " href="javascript:void(0) " (click)="goBack() ">Volver</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-header-tools ">
+                            <a class="btn btn-gradient-01 " [routerLink]="[ '/banner-cuadrado/create/'] ">Agregar Nuevo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Header -->
+        <div class="row flex-row ">
+            <div class="col-12 ">
+                <!-- Form -->
+                <div class="widget has-shadow ">
+                    <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list footable-loaded footable">
+                        <thead>
+                            <tr class="text-center">
+                                <th class="footable-sortable">No<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">imagen<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Título<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Enlace<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Abre<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Activo<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Acciones<span class="footable-sort-indicator"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="footable-even" *ngFor="let bancuadrado of bancuadrados | keys | paginate: { itemsPerPage: count, currentPage: p }">
+                                <td><span class="footable-toggle"></span>{{bancuadrado.id}}</td>
+                                <td><img src="{{bancuadrado.image}}" width="80" height="80"></td>
+                                <td>{{bancuadrado.titulo}}</td>
+                                <td>{{bancuadrado.enlace}}</td>
+                                <td>{{bancuadrado.target}}</td>
+                                <td>{{bancuadrado.is_active}}</td>
+                                <td class="td-actions ">
+                                    <a [routerLink]="[ '/banner-cuadrado/edit', bancuadrado.id] "><i class="la la-edit edit "></i></a>
+                                    <a (click)="onDelete(bancuadrado.id) "><i class="la la-close delete "></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+
+                                <td colspan="7">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    {{error}}
+
+                </div>
+                <!-- End Form -->
+            </div>
+        </div>
+        <!-- End Row -->
+    </div>
+    <!-- End Container -->
+    <app-footer></app-footer>
